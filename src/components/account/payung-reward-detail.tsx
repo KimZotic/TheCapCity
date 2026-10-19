@@ -30,9 +30,10 @@ export function PayungRewardDetail({ slug }: { slug: string }) {
   const variant = reward.variants.find((item) => item.id === variantId) ?? firstAvailable;
   const redeemed = Boolean(customer?.redeemedRewardIds.includes(reward.id));
   const eligible = Boolean(customer && customer.points >= reward.points && !redeemed && variant && variant.stock > 0);
-  const gallery = [...new Set([activeImage || reward.image, ...reward.gallery, ...reward.variants.map((item) => item.image).filter(Boolean)].filter(Boolean))];
+  const gallery = [...new Set([activeImage || reward.image, ...reward.gallery, ...reward.variants.map((item) => item.image).filter(Boolean)].filter(Boolean))] as string[];
 
   function selectVariant(id: string) {
+    if (!reward) return;
     const next = reward.variants.find((item) => item.id === id);
     if (!next) return;
     setVariantId(id);
@@ -41,6 +42,7 @@ export function PayungRewardDetail({ slug }: { slug: string }) {
   }
 
   function add(goCheckout = false) {
+    if (!reward) return;
     if (!customer) { setMessage("Log in to redeem Payung Program rewards."); return; }
     if (redeemed) { setMessage("This reward has already been redeemed on this account."); return; }
     if (customer.points < reward.points) { setMessage(`You need ${(reward.points - customer.points).toLocaleString()} more points.`); return; }
@@ -69,7 +71,7 @@ export function PayungRewardDetail({ slug }: { slug: string }) {
       <div aria-live="polite" className="min-h-5 pt-1.5 text-[8px] font-semibold text-[#4d58df]">{message}</div>
 
       <div className="mt-1 divide-y divide-black/[.07] border-y border-black/[.08]">
-        <details className="group py-3"><summary className="flex cursor-pointer list-none items-center justify-between text-[9px] font-semibold"><span>Details</span><span className="text-black/35 transition group-open:rotate-45">+</span></summary><div className="mt-3 text-[8px] leading-4 text-black/50"><p>{reward.description}</p><ul className="mt-2 space-y-1.5">{reward.details.map((detail) => <li key={detail}>• {detail}</li>)}</ul></div></details>
+        <details className="group py-3"><summary className="flex cursor-pointer list-none items-center justify-between text-[9px] font-semibold"><span>Details</span><span className="text-black/35 transition group-open:rotate-45">+</span></summary><div className="mt-3 text-[8px] leading-4 text-black/50"><p>{reward.description}</p><ul className="mt-2 space-y-1.5">{reward.details.map((detail) => <li key={detail}>- {detail}</li>)}</ul></div></details>
         <details className="group py-3"><summary className="flex cursor-pointer list-none items-center justify-between text-[9px] font-semibold"><span>Delivery & pickup</span><span className="text-black/35 transition group-open:rotate-45">+</span></summary><p className="mt-3 text-[8px] leading-4 text-black/48">Redeem with Payung Points, then choose delivery or TCC flagship pickup at checkout.</p></details>
       </div>
     </aside>
