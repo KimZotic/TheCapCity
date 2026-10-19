@@ -1,7 +1,1 @@
-{
-  "/account/page": "app/account/page.js",
-  "/payung/page": "app/payung/page.js",
-  "/page": "app/page.js",
-  "/payung/rewards/[slug]/page": "app/payung/rewards/[slug]/page.js",
-  "/studio/collections/page": "app/studio/collections/page.js"
-}
+{}

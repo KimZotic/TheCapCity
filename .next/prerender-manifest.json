@@ -1,1 +1,11 @@
-{"version":4,"routes":{"/collections/kl-legacy":{},"/collections/city-objects":{},"/collections/fitted-study":{}},"dynamicRoutes":{"/collections/[slug]":{"dataRoute":null,"dataRouteRegex":null,"fallback":null,"fallbackRevalidate":false,"fallbackSourceRoute":"/collections/[slug]","routeRegex":"^\\/collections\\/([^/]+?)(?:\\/)?$","allowHeader":[]}},"notFoundRoutes":[],"preview":{"previewModeId":"ce27495df73d4a7bed0f3e2b2da8c563","previewModeSigningKey":"6cdf1dc3c38978d2a0cbc2208fd01d5e1665d6c53a7104584ff2a0c3f04b55cb","previewModeEncryptionKey":"d7b981ac312a12560e3cfeb60fff57a94aafeb6fc94b28ecbc4fabfbec8b4fe7"}}
+{
+  "version": 4,
+  "routes": {},
+  "dynamicRoutes": {},
+  "notFoundRoutes": [],
+  "preview": {
+    "previewModeId": "908e131690af4d151418d25ecdc13e54",
+    "previewModeSigningKey": "738727af905d77191670327e246134eedf5972f8dc717b8eac313574c1f5d14c",
+    "previewModeEncryptionKey": "5f4e28ba7de7bdf48cc7672ebd7648871e3075ecb5ac1445e32f2e4559f1dee9"
+  }
+}
